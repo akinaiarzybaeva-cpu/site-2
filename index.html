@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ky">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MySoul — Жеке күндөлүгүм</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="#"><span class="brand-icon">♡</span> MySoul</a>
+    <p class="nav-label">КҮНДӨЛҮГҮМ</p>
+    <nav>
+      <a class="nav-link active" href="#home">⌂ <span>Башкы бет</span></a>
+      <a class="nav-link" href="#diary">✎ <span>Менин жазууларым</span></a>
+      <a class="nav-link" href="#mood">☻ <span>Маанайым</span></a>
+      <a class="nav-link" href="#goals">✧ <span>Максаттарым</span></a>
+    </nav>
+    <div class="sidebar-bottom">
+      <div class="privacy-note">🔒 <span>Бул — сенин жеке мейкиндигиң.</span></div>
+      <button id="themeToggle" class="theme-toggle" type="button">🌙 Түнкү тема</button>
+    </div>
+  </aside>
+
+  <main class="main-content" id="home">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow" id="todayDate">БҮГҮНКҮ КҮН</p>
+        <h1>Кош келиң, өзүңө 💗</h1>
+        <p class="subtitle">Бул жерде сенин ойлоруңа жана эскерүүлөрүңө орун бар.</p>
+      </div>
+      <div class="avatar" aria-label="Профиль">♡</div>
+    </header>
+
+    <section class="hero-card">
+      <div class="hero-copy">
+        <p class="eyebrow">БҮГҮН ӨЗҮҢӨ УБАКЫТ БӨЛ</p>
+        <h2>Кээде жүрөгүңдөгүн<br>кагазга түшүрүү жетиштүү.</h2>
+        <p>Шашылба. Ар бир күн — жаңы барак.</p>
+        <button class="primary-button" id="writeNow" type="button">＋ Жаңы жазуу</button>
+      </div>
+      <div class="hero-art" aria-hidden="true">🌷</div>
+    </section>
+
+    <section class="stats-grid" aria-label="Күндөлүк статистикасы">
+      <article class="stat-card"><span class="stat-icon">📖</span><p>Бардык жазуулар</p><strong id="entryCount">0</strong></article>
+      <article class="stat-card"><span class="stat-icon">🌸</span><p>Бул айда</p><strong id="monthCount">0</strong></article>
+      <article class="stat-card"><span class="stat-icon">✨</span><p>Акыркы жазуу</p><strong id="lastEntry">Азырынча жок</strong></article>
+    </section>
+
+    <section class="content-grid">
+      <div class="panel" id="diary">
+        <div class="section-heading">
+          <div><p class="eyebrow">СЕНИН ОЙЛОРУҢ</p><h2>Акыркы жазуулар</h2></div>
+          <button class="text-button" id="showAll" type="button">Баарын көрүү ↗</button>
+        </div>
+        <form id="entryForm" class="entry-form">
+          <label for="entryTitle">Жазуунун аталышы</label>
+          <input id="entryTitle" maxlength="100" placeholder="Мисалы: Бүгүнкү ойлорум..." required>
+          <label for="entryText">Бүгүн эмнени сездиң?</label>
+          <textarea id="entryText" rows="5" placeholder="Бул жерге ойлоруңду эркин жаз..." required></textarea>
+          <div class="form-bottom">
+            <label class="mood-label" for="entryMood">Маанайың</label>
+            <select id="entryMood" aria-label="Маанайың">
+              <option value="😊">😊 Жакшы</option>
+              <option value="😌">😌 Тынч</option>
+              <option value="🥰">🥰 Бактылуу</option>
+              <option value="😔">😔 Кайгылуу</option>
+              <option value="😴">😴 Чарчаган</option>
+            </select>
+            <button class="primary-button" type="submit">Сактоо ♡</button>
+          </div>
+          <p class="form-message" id="formMessage" role="status"></p>
+        </form>
+        <div id="entriesList" class="entries-list">
+          <div class="empty-state"><span>📝</span><p>Азырынча жазуу жок.</p><small>Биринчи жазууңду кошуп көр!</small></div>
+        </div>
+      </div>
+
+      <aside class="right-column">
+        <section class="panel quote-card">
+          <span class="quote-mark">“</span>
+          <p class="eyebrow">БҮГҮНКҮ ЭСКЕРТҮҮ</p>
+          <blockquote>Өзүңө да башкаларга көрсөткөн мээримиңди көрсөт.</blockquote>
+          <span class="quote-flower">✿</span>
+        </section>
+        <section class="panel mood-panel" id="mood">
+          <p class="eyebrow">ӨЗҮҢДҮ УГУП КӨР</p>
+          <h2>Бүгүнкү маанайың?</h2>
+          <div class="mood-options">
+            <button type="button" data-mood="🥰" aria-label="Бактылуу">🥰</button>
+            <button type="button" data-mood="😊" aria-label="Жакшы">😊</button>
+            <button type="button" data-mood="😌" aria-label="Тынч">😌</button>
+            <button type="button" data-mood="😔" aria-label="Кайгылуу">😔</button>
+            <button type="button" data-mood="😴" aria-label="Чарчаган">😴</button>
+          </div>
+          <p id="moodMessage" class="muted">Сезимдериңдин баарына орун бар.</p>
+        </section>
+        <section class="panel goal-panel" id="goals">
+          <p class="eyebrow">КИЧИНЕКЕЙ КАДАМДАР</p>
+          <h2>Бүгүнкү максат</h2>
+          <form id="goalForm" class="goal-form">
+            <input id="goalInput" maxlength="120" placeholder="Мисалы: 20 мүнөт окуу" required>
+            <button class="icon-button" type="submit" aria-label="Максат кошуу">＋</button>
+          </form>
+          <ul id="goalList" class="goal-list"><li class="empty-goal">Азырынча максат жок.</li></ul>
+        </section>
+      </aside>
+    </section>
+    <footer>MySoul ♡ <span>Өзүңө арналган кичинекей дүйнө.</span></footer>
+  </main>
+</body>
+</html>
